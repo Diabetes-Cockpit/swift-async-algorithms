@@ -156,7 +156,7 @@ public actor AsyncLimitBuffer<Element: Sendable>: AsyncBuffer {
   var buffer = [Element]()
   let policy: Policy
   
-  init(policy: Policy) {
+  public init(policy: Policy) {
     // limits should always be greater than 0 items
     switch policy {
       case .bufferingNewest(let limit):
@@ -228,7 +228,7 @@ public struct AsyncBufferSequence<Base: AsyncSequence, Buffer: AsyncBuffer> wher
   let base: Base
   let createBuffer: @Sendable () -> Buffer
   
-  init(_ base: Base, createBuffer: @Sendable @escaping () -> Buffer) {
+  public init(_ base: Base, createBuffer: @Sendable @escaping () -> Buffer) {
     self.base = base
     self.createBuffer = createBuffer
   }
